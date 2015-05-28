@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>SuperHero framework for SuperHeroes management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body ng-app>
-    <div class="container" ng-init="ultimateAnswer = 42">
-      <div class="header clearfix">
+</head>
+<body ng-app="avengers">
+<div class="container" ng-controller="AvengersListCtrl as list">
+    <div class="header clearfix">
         <h3 class="text-muted">Avengers Team Management</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1>Avengers vs AngularJS</h1>
-        <p>Super heroic competition</p>
-      </div>
-
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Avengers Team</h4>
-          <ul>
-            <li>Spiderman</li>
-            <li>Thor</li>
-            <li>Iron Man</li>
-          </ul>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>AngularJS superpowers</h4>
-          <div>
-            <p>Is AngularJS working? -> No</p>
-            <p>Answer for all questions is: {{ ultimateAnswer }}</p>
-          </div>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <p>© Espeo Software 2015</p>
-      </footer>
     </div>
-  </body>
-  <script src="static/js/angular.min.js"></script>
+
+    <div class="jumbotron">
+        <h1>Avengers vs AngularJS</h1>
+
+        <p>Super heroic competition</p>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Avengers Team</h4>
+            <ul>
+                <li ng-repeat="avenger in list.avengers">{{avenger.name}}</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>AngularJS superpowers</h4>
+
+            <div>
+                <p>Is AngularJS working? -> {{ "yes" }}</p>
+
+                <p>Answer for all questions is: {{ list.ultimateAnswer }}</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© Espeo Software 2015</p>
+    </footer>
+</div>
+</body>
+<script src="static/js/angular.min.js"></script>
+<script src="static/js/app.js"></script>
 </html>
