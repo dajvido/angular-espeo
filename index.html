@@ -76,6 +76,18 @@
         <p>Real Name: {{ details.avenger.realName }}</p>
         <p>Has superpowers: {{ details.avenger.hasOwnSuperPowers|checkmark }}</p>
 
+        <p>Species: {{ details.avenger.species }}</p>
+        <p>Origin: {{ details.avenger.origin }}</p>
+        <p>First Apperance: {{ details.avenger.firstApperance }}</p>
+        <p>Abilities:</p>
+        <ul ng-repeat="ability in details.avenger.abilities">
+            <li>{{ ability }}</li>
+        </ul>
+        <!--'abilities': [-->
+        <!--'Genius-level intellect',-->
+        <!--'Highly proficient scientist, engineer, and businessperson',-->
+        <!--'Has powered armored suit'-->
+        <!--],-->
         <img ng-src="{{ details.avenger.avatarURL }}">
     </script>
 
@@ -86,5 +98,6 @@
 </body>
 <script src="static/js/angular.min.js"></script>
 <script src="static/js/angular-route.min.js"></script>
+<script src="static/js/app.service.js"></script>
 <script src="static/js/app.js"></script>
 </html>
