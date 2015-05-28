@@ -10,8 +10,8 @@
                     controllerAs: 'list'
                 })
                 .when('/avenger/:avenger', {
-                    templateUrl: '',
-                    controller: 'AvengersCtrl',
+                    templateUrl: 'tpl-avenger',
+                    controller: 'AvengerCtrl',
                     controllerAs: 'details'
                 })
                 .otherwise({
@@ -19,6 +19,7 @@
                 })
         })
         .controller('AvengersListCtrl', AvengersListCtrl)
+        .controller('AvengerCtrl', AvengerCtrl)
         .filter('checkmark', CheckMarkFilter);
 
     function AvengersListCtrl() {
@@ -34,6 +35,11 @@
                 hasOwnSuperPowers: false
             };
         }
+    }
+
+    function AvengerCtrl($routeParams) {
+        var ths = this;
+        ths.avenger = listOfAvengers[$routeParams.avenger];
     }
 
     function CheckMarkFilter () {
