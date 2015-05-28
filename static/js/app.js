@@ -3,11 +3,21 @@
         .controller('AvengersListCtrl', AvengersListCtrl);
 
     function AvengersListCtrl() {
-        this.ultimateAnswer = 42;
-        this.avengers = listOfAvengers;
+        var ths = this;
+        ths.ultimateAnswer = 42;
+        ths.avengers = listOfAvengers;
+        ths.newAvenger = {
+            hasOwnSuperPowers: false
+        };
+        ths.add = function (newAvenger) {
+            ths.avengers.push(newAvenger);
+            ths.newAvenger = {
+                hasOwnSuperPowers: false
+            };
+        }
     }
 
-    var listOfAvengers =  [
+    var listOfAvengers = [
         {
             'name': 'Iron Man',
             'realName': 'Anthony Edward "Tony" Stark',

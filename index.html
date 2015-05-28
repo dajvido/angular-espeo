@@ -22,9 +22,24 @@
         <div class="col-lg-6">
             <h4>Avengers Team</h4>
             <ul>
-                <li ng-repeat="avenger in list.avengers">{{avenger.name}}</li>
+                <li ng-repeat="avenger in list.avengers">{{ avenger.name }} ({{ avenger.realName }}, superpowers: {{ avenger.hasOwnSuperPowers }})</li>
             </ul>
+            
         </div>
+        <form class="col-lg-6" role="form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="form-control" ng-model="list.newAvenger.name">
+            </div>
+            <div class="form-group">
+                <label for="realName">Real name:</label>
+                <input type="text" id="realName" class="form-control" ng-model="list.newAvenger.realName">
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox" ng-model="list.newAvenger.hasOwnSuperPowers"> Has superpowers?</label>
+            </div>
+            <button class="btn btn-default" ng-click="list.add(list.newAvenger)">Add</button>
+        </form>
 
         <div class="col-lg-6">
             <h4>AngularJS superpowers</h4>
