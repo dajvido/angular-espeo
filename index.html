@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body ng-app="avengers">
-<div class="container" ng-controller="AvengersListCtrl as list">
+<div class="container">
     <div class="header clearfix">
         <h3 class="text-muted">Avengers Team Management</h3>
     </div>
@@ -18,49 +18,54 @@
         <p>Super heroic competition</p>
     </div>
 
-    <div class="row marketing">
-        <div class="col-lg-6">
-            <h4>Avengers Team</h4>
-            <label>Search: <input type="text" ng-model="list.search.name"></label>
-            <table class="table table-hover">
-                <tr>
-                    <td>Name</td>
-                    <td>Real Name</td>
-                    <td>Has superpowers</td>
-                </tr>
-                <tr ng-repeat="avenger in list.avengers|filter:list.search:strict">
-                    <td>{{ avenger.name }}</td>
-                    <td>{{ avenger.realName }}</td>
-                    <td>{{ avenger.hasOwnSuperPowers|checkmark }}</td>
-                </tr>
-            </table>
+    <div ng-view>
 
-        </div>
-        <form class="col-lg-6" role="form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" class="form-control" ng-model="list.newAvenger.name">
-            </div>
-            <div class="form-group">
-                <label for="realName">Real name:</label>
-                <input type="text" id="realName" class="form-control" ng-model="list.newAvenger.realName">
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" ng-model="list.newAvenger.hasOwnSuperPowers"> Has superpowers?</label>
-            </div>
-            <button class="btn btn-default" ng-click="list.add(list.newAvenger)">Add</button>
-        </form>
-
-        <div class="col-lg-6">
-            <h4>AngularJS superpowers</h4>
-
-            <div>
-                <p>Is AngularJS working? -> {{ "yes" }}</p>
-
-                <p>Answer for all questions is: {{ list.ultimateAnswer }}</p>
-            </div>
-        </div>
     </div>
+
+    <script type="text/ng-template" id="tpl-avengers">
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Avengers Team</h4>
+                <label>Search: <input type="text" ng-model="list.search.name"></label>
+                <table class="table table-hover">
+                    <tr>
+                        <td>Name</td>
+                        <td>Real Name</td>
+                        <td>Has superpowers</td>
+                    </tr>
+                    <tr ng-repeat="avenger in list.avengers|filter:list.search:strict">
+                        <td>{{ avenger.name }}</td>
+                        <td>{{ avenger.realName }}</td>
+                        <td>{{ avenger.hasOwnSuperPowers|checkmark }}</td>
+                    </tr>
+                </table>
+            </div>
+            <form class="col-lg-6" role="form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="form-control" ng-model="list.newAvenger.name">
+                </div>
+                <div class="form-group">
+                    <label for="realName">Real name:</label>
+                    <input type="text" id="realName" class="form-control" ng-model="list.newAvenger.realName">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="list.newAvenger.hasOwnSuperPowers"> Has superpowers?</label>
+                </div>
+                <button class="btn btn-default" ng-click="list.add(list.newAvenger)">Add</button>
+            </form>
+
+            <div class="col-lg-6">
+                <h4>AngularJS superpowers</h4>
+
+                <div>
+                    <p>Is AngularJS working? -> {{ "yes" }}</p>
+
+                    <p>Answer for all questions is: {{ list.ultimateAnswer }}</p>
+                </div>
+            </div>
+        </div>
+    </script>
 
     <footer class="footer">
         <p>© Espeo Software 2015</p>
@@ -68,5 +73,6 @@
 </div>
 </body>
 <script src="static/js/angular.min.js"></script>
+<script src="static/js/angular-route.min.js"></script>
 <script src="static/js/app.js"></script>
 </html>

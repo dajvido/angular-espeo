@@ -1,5 +1,23 @@
 (function () {
-    angular.module('avengers', [])
+    angular.module('avengers', [
+        'ngRoute'
+    ])
+        .config(function($routeProvider) {
+            $routeProvider
+                .when('/avengers', {
+                    templateUrl: 'tpl-avengers',
+                    controller: 'AvengersListCtrl',
+                    controllerAs: 'list'
+                })
+                .when('/avenger/:avenger', {
+                    templateUrl: '',
+                    controller: 'AvengersCtrl',
+                    controllerAs: 'details'
+                })
+                .otherwise({
+                    redirectTo: '/avengers'
+                })
+        })
         .controller('AvengersListCtrl', AvengersListCtrl)
         .filter('checkmark', CheckMarkFilter);
 
