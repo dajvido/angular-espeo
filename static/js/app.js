@@ -1,6 +1,7 @@
 (function () {
     angular.module('avengers', [])
-        .controller('AvengersListCtrl', AvengersListCtrl);
+        .controller('AvengersListCtrl', AvengersListCtrl)
+        .filter('checkmark', CheckMarkFilter);
 
     function AvengersListCtrl() {
         var ths = this;
@@ -15,6 +16,13 @@
                 hasOwnSuperPowers: false
             };
         }
+    }
+
+    function CheckMarkFilter () {
+        function filter(input) {
+            return input ? '\u2714' : '\u2718';
+        }
+        return filter;
     }
 
     var listOfAvengers = [

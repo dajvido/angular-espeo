@@ -21,10 +21,20 @@
     <div class="row marketing">
         <div class="col-lg-6">
             <h4>Avengers Team</h4>
-            <ul>
-                <li ng-repeat="avenger in list.avengers">{{ avenger.name }} ({{ avenger.realName }}, superpowers: {{ avenger.hasOwnSuperPowers }})</li>
-            </ul>
-            
+            <label>Search: <input type="text" ng-model="list.search.name"></label>
+            <table class="table">
+                <tr>
+                    <td>Name</td>
+                    <td>Real Name</td>
+                    <td>Has superpowers</td>
+                </tr>
+                <tr ng-repeat="avenger in list.avengers|filter:list.search:strict">
+                    <td>{{ avenger.name }}</td>
+                    <td>{{ avenger.realName }}</td>
+                    <td>{{ avenger.hasOwnSuperPowers|checkmark }}</td>
+                </tr>
+            </table>
+
         </div>
         <form class="col-lg-6" role="form">
             <div class="form-group">
